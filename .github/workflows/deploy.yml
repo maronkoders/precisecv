@@ -18,7 +18,7 @@ jobs:
           
       - name: Deploy to DigitalOcean
         env:
-          DEPLOY_PATH: '/var/www/html/copybay'  # Change this to your app path
+          DEPLOY_PATH: '/var/www/html/copybay/server/'  # Change this to your app path
           DROPLET_HOST: ${{ secrets.DROPLET_HOST }}
           DROPLET_USER: ${{ secrets.DROPLET_USER }}
         run: |
