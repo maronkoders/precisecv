@@ -89,7 +89,7 @@
                     <p>${exp.responsibility}</p>
                 </div>
             `).join('');
-            // Update work reference
+          
             const workReferencePreview = document.getElementById('preview-work-reference');
             workReferencePreview.innerHTML = formData.workReference.map(ref => `
                 <div>
@@ -110,7 +110,7 @@
             field.addEventListener('input', updatePreview);
         });
 
-        // Add event listeners to dynamic add buttons
+       
         document.getElementById('addEducation').addEventListener('click', () => setTimeout(updatePreview, 0));
         document.getElementById('addExperience').addEventListener('click', () => setTimeout(updatePreview, 0));
         document.getElementById('addPosition').addEventListener('click', () => setTimeout(updatePreview, 0));
