@@ -65,6 +65,10 @@ app.post('/generate-cv', (req, res) => {
 
   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
   pdfGenerator.createCV(data);
+  const outputName = `${data.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}`;
+  const filePath = path.join(__dirname, 'public', 'generated-pdfs', `${outputName}.pdf`);
+
+ return res.send(filePath);
 
   notifier.notify({
     title: 'Download Success',

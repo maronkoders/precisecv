@@ -13,7 +13,7 @@ const doc = new PDFDocument();
 
 // Pipe its output somewhere, like to a file or HTTP response
 // See below for browser usage
-const outputName = `${data.personalDetails.name}`;
+const outputName = `${data.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}`;
 const pdfDir = path.join(__dirname, 'public', 'generated-pdfs');
 if (!fs.existsSync(pdfDir)){
     fs.mkdirSync(pdfDir, { recursive: true });

@@ -271,28 +271,39 @@
 
         // Function to send form data to backend
         function sendData(formData) {
-            fetch('/generate-cv', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Handle response from backend
-                console.log(data);
-            })
-            .catch(error => {
-                // Handle error
-                console.error('Error:', error);
-            });
+    fetch('/generate-cv', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
+        return response.blob(); // Change to blob() instead of json()
+    })
+    .then(blob => {
+        // Create a URL for the blob
+        const url = window.URL.createObjectURL(blob);
+        // Create a temporary link element
+        const a = document.createElement('a');
+        a.href = url;
+        // Set the download filename
+        a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
+        // Append to body, click, and remove
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Add better error handling here, perhaps show an error message to the user
+        alert('Failed to generate CV. Please try again.');
+    });
+}
 
         // Event listener for submit button click
         document.getElementById('save').addEventListener('click', function() {
