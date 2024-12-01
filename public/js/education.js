@@ -2,6 +2,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const addEducationButton = document.getElementById('addEducation');
     const educationContainer = document.getElementById('educationContainer');
 
+    // Add event delegation for addGrade buttons
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('addGrade')) {
+            const gradeScoreContainer = e.target.closest('.education').querySelector('.grade-score-container');
+            const gradeScore = document.createElement('div');
+            gradeScore.classList.add('grid', 'grid-cols-3', 'gap-4', 'mt-2');
+            gradeScore.innerHTML = `
+                <div>
+                    <input type="text" class="mt-1 mb-1 block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow subject" placeholder="Subject">
+                </div>
+                <div>
+                    <input type="text" class="mt-1 mb-1 block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow score" placeholder="Score">
+                </div>
+                <div class="relative">
+                    <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
+                </div>
+            `;
+            gradeScoreContainer.appendChild(gradeScore);
+
+            const removeGradeButton = gradeScore.querySelector('.relative button');
+            removeGradeButton.addEventListener('click', function() {
+                gradeScore.remove();
+            });
+        }
+    });
+
     addEducationButton.addEventListener('click', function() {
         const education = document.createElement('div');
         education.classList.add('education', 'border', 'border-gray-300', 'p-4', 'mt-2');
@@ -39,31 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const removeButton = education.querySelector('.relative button');
         removeButton.addEventListener('click', function() {
             education.remove();
-        });
-
-        const addGradeButton = education.querySelector('.addGrade');
-        const gradeScoreContainer = education.querySelector('.grade-score-container');
-
-        addGradeButton.addEventListener('click', function() {
-            const gradeScore = document.createElement('div');
-            gradeScore.classList.add('grid', 'grid-cols-3', 'gap-4', 'mt-2');
-            gradeScore.innerHTML = `
-                <div>
-                    <input type="text" class="mt-1 mb-1 block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow subject" placeholder="Subject">
-                </div>
-                <div>
-                    <input type="text" class="mt-1 mb-1 block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow score" placeholder="Score">
-                </div>
-                <div class="relative">
-                    <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-                </div>
-            `;
-            gradeScoreContainer.appendChild(gradeScore);
-
-            const removeGradeButton = gradeScore.querySelector('.relative button');
-            removeGradeButton.addEventListener('click', function() {
-                gradeScore.remove();
-            });
         });
     });
 });
