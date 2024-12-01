@@ -1,5 +1,6 @@
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const path = require('path');
 
 
 function capitalizeFirstLetter(string) {
@@ -13,7 +14,12 @@ const doc = new PDFDocument();
 // Pipe its output somewhere, like to a file or HTTP response
 // See below for browser usage
 const outputName = `${data.personalDetails.name}`;
-doc.pipe(fs.createWriteStream(outputName + '.pdf'));
+const pdfDir = path.join(__dirname, 'public', 'generated-pdfs');
+if (!fs.existsSync(pdfDir)){
+    fs.mkdirSync(pdfDir, { recursive: true });
+}
+const filePath = path.join(pdfDir, `${outputName}.pdf`);
+doc.pipe(fs.createWriteStream(filePath));
 
   // Set the border properties
   const borderWidth = 10;

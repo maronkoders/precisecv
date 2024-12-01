@@ -66,7 +66,6 @@ app.post('/generate-cv', (req, res) => {
   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
   pdfGenerator.createCV(data);
 
-  res.send('Notification sent!');
   notifier.notify({
     title: 'Download Success',
     message: 'File downloaded successfully',
