@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... (keep your existing head content) ... -->
-    <style>
-        .preview-section {
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: Arial, sans-serif;
-        }
-        .preview-section h2 {
-            border-bottom: 2px solid #4a5568;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreciseCV </title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./js/workReference.js" defer></script>
+    <script src="./js/education.js" defer></script>
+    <script src="./js/workExperience.js" defer></script>
+    <script src="./js/skills.js" defer></script>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8 flex">
@@ -116,8 +112,71 @@
         document.getElementById('addPosition').addEventListener('click', () => setTimeout(updatePreview, 0));
         document.getElementById('addSkill').addEventListener('click', () => setTimeout(updatePreview, 0));
 
-        // Initial preview update
-        updatePreview();
+            // Collect work reference data
+            const referenceItems = document.querySelectorAll('.work-reference');
+            referenceItems.forEach((item) => {
+                formData.workReference.push({
+                    position: item.querySelector('.position').value,
+                    company: item.querySelector('.company').value,
+                    duration: item.querySelector('.duration').value,
+                    contactName: item.querySelector('.contact-name').value,
+                    contactSurname: item.querySelector('.contact-surname').value,
+                    contactEmail: item.querySelector('.contact-email').value,
+                    contactPhone: item.querySelector('.contact-phone').value,
+                    contactPosition: item.querySelector('.contact-position').value
+                });
+            });
+
+            // Collect skills data
+            const skillInputs = document.querySelectorAll('.skill');
+            skillInputs.forEach((input) => {
+                formData.skills.push(input.value);
+            });
+
+            return formData;
+        }
+
+        // Function to send form data to backend
+        function sendData(formData) {
+    fetch('/generate-cv', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.blob(); // Change to blob() instead of json()
+    })
+    .then(blob => {
+        // Create a URL for the blob
+        const url = window.URL.createObjectURL(blob);
+        // Create a temporary link element
+        const a = document.createElement('a');
+        a.href = url;
+        // Set the download filename
+        a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
+        // Append to body, click, and remove
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Add better error handling here, perhaps show an error message to the user
+        alert('Failed to generate CV. Please try again.');
+    });
+}
+
+        // Event listener for submit button click
+        document.getElementById('save').addEventListener('click', function() {
+            const formData = collectFormData();
+            sendData(formData);
+        });
     </script>
 </body>
 </html>

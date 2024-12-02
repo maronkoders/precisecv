@@ -63,14 +63,37 @@ app.post('/generate-cv', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const agent = useragent.parse(req.headers['user-agent']);
 
+  const outputDir = path.join(__dirname, 'public', 'generated-pdfs');
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
   pdfGenerator.createCV(data);
+  const outputName = `${data.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}`;
+  const filePath = path.join(__dirname, 'public', 'generated-pdfs', `${outputName}.pdf`);
 
-  res.send('Notification sent!');
-  notifier.notify({
-    title: 'Download Success',
-    message: 'File downloaded successfully',
-  });
+  pdfGenerator.createCV(data)
+    .then(() => {
+      // Then send the file
+      res.sendFile(filePath, (err) => {
+        if (err) {
+          console.error('Error sending file:', err);
+          res.status(500).send('Error generating PDF');
+        } else {
+          notifier.notify({
+            title: 'Download Success',
+            message: 'File downloaded successfully',
+          });
+        }
+      });
+    })
+    .catch(err => {
+      console.error('Error generating PDF:', err);
+      res.status(500).send('Error generating PDF');
+    });
+
+
 });
 
 app.listen(PORT, () => {
