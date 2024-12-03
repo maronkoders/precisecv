@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreciseCV</title>
+    <title>PreciseCV </title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -15,42 +15,43 @@
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-semibold mb-6 text-center">PreciseCV Maker</h1>
+
+        <h1 class="text-2xl font-semibold mb-4"> <u>PreciseCV Maker</u></h1>
         
         <!-- Personal Details -->
-        <div class="mb-12">
+        <div class="mb-10">
             <h2 class="text-2xl font-semibold mb-4"><u>Personal Details</u></h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border border-gray-300 p-6 rounded-lg shadow-md">
+            <div class="grid grid-cols-4 gap-4 border border-gray-300 p-4">
                 <div>
                     <p class="font-semibold">Name:</p>
-                    <input type="text" id="name" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="John Doe">
+                    <input type="text" id="name" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="John Doe">
                 </div>
                 <div>
                     <p class="font-semibold">Email:</p>
-                    <input type="email" id="email" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="john.doe@example.com">
+                    <input type="email" id="email" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="john.doe@example.com">
                 </div>
                 <div>
                     <p class="font-semibold">Address:</p>
-                    <input type="text" id="address" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="31 Smith Street, New York, Harare">
+                    <input type="text" id="address" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="31 Smith Street, New York, Harare">
                 </div>
                 <div>
                     <p class="font-semibold">Phone:</p>
-                    <input type="tel" id="phone" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(263) 775 634 192">
+                    <input type="tel" id="phone" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="(263) 775 634 192">
                 </div>
                 <div>
                     <p class="font-semibold">Date of Birth:</p>
-                    <input type="text" id="dateOfBirth" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="09/07/2000">
+                    <input type="text" id="dateOfBirth" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="09/07/2000">
                 </div>
                 <div>
                     <p class="font-semibold">Gender:</p>
-                    <select id="gender" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select id="gender" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
                 <div>
                     <p class="font-semibold">Marital Status:</p>
-                    <select id="maritalStatus" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select id="maritalStatus" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
                         <option value="Single">Single</option>
                         <option value="Married">Married</option>
                         <option value="Divorced">Divorced</option>
@@ -191,7 +192,14 @@
         </div>
 
         <div class="flex justify-center">
-            <button id="save" class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-8 rounded">GENERATE CV</button>
+            <button id="save" class="flex items-center bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-8 rounded disabled:opacity-50" disabled>
+                <span id="save-text">MAKE CV</span>
+                <!-- Loader -->
+                <svg id="save-loader" class="w-5 h-5 ml-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+            </button>
         </div>
     </div>
     <script>
@@ -328,13 +336,34 @@
                 console.error('Error:', error);
                 // Add better error handling here, perhaps show an error message to the user
                 alert('Failed to generate CV. Please try again.');
+            })
+            .finally(() => {
+                // Re-enable the button and hide the loader
+                const saveButton = document.getElementById('save');
+                saveButton.disabled = false;
+                document.getElementById('save-loader').classList.add('hidden');
+                document.getElementById('save-text').classList.remove('hidden');
             });
         }
 
         // Event listener for submit button click
         document.getElementById('save').addEventListener('click', function() {
+            const saveButton = document.getElementById('save');
+            const saveText = document.getElementById('save-text');
+            const saveLoader = document.getElementById('save-loader');
+
+            // Disable the button and show the loader
+            saveButton.disabled = true;
+            saveText.classList.add('hidden');
+            saveLoader.classList.remove('hidden');
+
             const formData = collectFormData();
             sendData(formData);
+        });
+
+        // Optional: Enable the button when the page is fully loaded
+        window.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('save').disabled = false;
         });
 
     </script>
