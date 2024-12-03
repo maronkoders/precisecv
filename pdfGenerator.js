@@ -6,7 +6,7 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function createCV(data) {
+function createCV(data) { 
   return new Promise((resolve, reject) => {
     try {
       // Create a document
@@ -112,7 +112,6 @@ function createCV(data) {
         });
 
 
-        if (ed.grades === null) {
           doc.font('Times-Roman').text('Grades:');
           ed.grades.map(grade => {
             doc.font('Times-Roman').fontSize(12).text(`${grade.subject}`, {
@@ -121,7 +120,6 @@ function createCV(data) {
               align: 'right'
             });
           });
-        }
       });
 
 
