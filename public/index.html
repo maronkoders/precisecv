@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreciseCV </title>
+    <title>PreciseCV Maker</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -13,170 +13,202 @@
     <script src="./js/workExperience.js" defer></script>
     <script src="./js/skills.js" defer></script>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8 flex">
-        <!-- Form Section -->
-        <div class="w-1/2 pr-4">
-            <h1 class="text-2xl font-semibold mb-4"><u>PreciseCV Maker</u></h1>
-            
-            <!-- ... (keep your existing form content) ... -->
+<body class="bg-gray-50">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">PreciseCV Maker</h1>
+            <nav>
+                <!-- <a href="#" class="text-white hover:underline mx-2">Home</a>
+                <a href="#" class="text-white hover:underline mx-2">About</a>
+                <a href="#" class="text-white hover:underline mx-2">Contact</a> -->
+            </nav>
+        </div>
+    </header>
 
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4"><u>PERSONAL DETAILS</u></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div>
+                    <label class="font-semibold">Name:</label>
+                    <input type="text" id="name" class="block w-full border border-gray-300 rounded-md p-2" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="font-semibold">Email:</label>
+                    <input type="email" id="email" class="block w-full border border-gray-300 rounded-md p-2" placeholder="john.doe@example.com">
+                </div>
+                <div>
+                    <label class="font-semibold">Address:</label>
+                    <input type="text" id="address" class="block w-full border border-gray-300 rounded-md p-2" placeholder="31 Smith Street, New York, Harare">
+                </div>
+                <div>
+                    <label class="font-semibold">Phone:</label>
+                    <input type="tel" id="phone" class="block w-full border border-gray-300 rounded-md p-2" placeholder="(263) 775 634 192">
+                </div>
+                <div>
+                    <label class="font-semibold">Date of Birth:</label>
+                    <input type="text" id="dateOfBirth" class="block w-full border border-gray-300 rounded-md p-2" placeholder="09/07/2000">
+                </div>
+                <div>
+                    <label class="font-semibold">Gender:</label>
+                    <select id="gender" class="block w-full border border-gray-300 rounded-md p-2">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="font-semibold">Marital Status:</label>
+                    <select id="maritalStatus" class="block w-full border border-gray-300 rounded-md p-2">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
-        <!-- Preview Section -->
-        <div class="w-1/2 pl-4">
-            <h2 class="text-2xl font-semibold mb-4"><u>CV Preview</u></h2>
-            <div id="preview" class="preview-section">
-                <h2>Personal Details</h2>
-                <p><strong>Name:</strong> <span id="preview-name"></span></p>
-                <p><strong>Email:</strong> <span id="preview-email"></span></p>
-                <p><strong>Address:</strong> <span id="preview-address"></span></p>
-                <p><strong>Phone:</strong> <span id="preview-phone"></span></p>
-                <p><strong>Date of Birth:</strong> <span id="preview-dob"></span></p>
-                <p><strong>Gender:</strong> <span id="preview-gender"></span></p>
-                <p><strong>Marital Status:</strong> <span id="preview-marital-status"></span></p>
-
-                <h2>Education</h2>
-                <div id="preview-education"></div>
-
-                <h2>Work Experience</h2>
-                <div id="preview-work-experience"></div>
-
-                <h2>Work Reference</h2>
-                <div id="preview-work-reference"></div>
-
-                <h2>Skills</h2>
-                <ul id="preview-skills"></ul>
+        <!-- Education Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8" id="educationSection">
+            <h2 class="text-2xl font-semibold mb-4"><u>EDUCATIONAL BACKGROUND</u></h2>
+            <small class="mb-3 block"><em>Click the "Add Education" button to add</em></small>
+            <div id="educationContainer">
+                <div class="education border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <label class="font-semibold">School Name:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 school" placeholder="School Name">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Level:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 level" placeholder="Level">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Duration:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="font-semibold mb-2"><u>Grades:</u></p>
+                        <small class="mb-3"><em>Click the "Add Grade" button to add</em></small>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 grade-score-container">
+                        </div>
+                        <button class="addGrade mt-4 bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Add Grade</button>
+                    </div>
+                </div>
             </div>
+            <button id="addEducation" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Education</button>
         </div>
     </div>
 
-    <script>
-        // ... (keep your existing JavaScript) ...
-
-        // Function to update preview
-        function updatePreview() {
-            const formData = collectFormData();
-            
-            // Update personal details
-            document.getElementById('preview-name').textContent = formData.personalDetails.name;
-            document.getElementById('preview-email').textContent = formData.personalDetails.email;
-            document.getElementById('preview-address').textContent = formData.personalDetails.address;
-            document.getElementById('preview-phone').textContent = formData.personalDetails.phone;
-            document.getElementById('preview-dob').textContent = formData.personalDetails.dateOfBirth;
-            document.getElementById('preview-gender').textContent = formData.personalDetails.gender;
-            document.getElementById('preview-marital-status').textContent = formData.personalDetails.maritalStatus;
-
-            // Update education
-            const educationPreview = document.getElementById('preview-education');
-            educationPreview.innerHTML = formData.education.map(edu => `
-                <div>
-                    <p><strong>${edu.school}</strong> - ${edu.level}</p>
-                    <p>${edu.duration}</p>
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8" id="workExperienceSection">
+            <h2 class="text-2xl font-semibold mb-4"><u>WORK EXPERIENCE</u></h2>
+            <small class="mb-3 block"><em>Click the "Add Experience" button to add</em></small>
+            <div id="workExperienceContainer">
+                <div class="work-experience border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="font-semibold">Position:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 position" placeholder="Position">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Company:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 company" placeholder="Company">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Duration:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="font-semibold">Responsibility:</label>
+                        <textarea class="block w-full border border-gray-300 rounded-md p-2 responsibility" rows="4" placeholder="Responsibility"></textarea>
+                    </div>
                 </div>
-            `).join('');
+            </div>
+            <button id="addExperience" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Experience</button>
+        </div>
 
-            // Update work experience
-            const workExperiencePreview = document.getElementById('preview-work-experience');
-            workExperiencePreview.innerHTML = formData.workExperience.map(exp => `
-                <div>
-                    <p><strong>${exp.position}</strong> at ${exp.company}</p>
-                    <p>${exp.duration}</p>
-                    <p>${exp.responsibility}</p>
+        <!-- Work Reference Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8" id="workReferenceSection">
+            <h2 class="text-2xl font-semibold mb-4"><u>WORK REFERENCE</u></h2>
+            <small class="mb-3 block"><em>Click the "Add Position" button to add</em></small>
+            <div id="workReferenceContainer">
+                <div class="work-reference border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div>
+                            <label class="font-semibold">Position:</label>
+                            <input type="text" id="position" class="block w-full border border-gray-300 rounded-md p-2 position" placeholder="Position">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Company:</label>
+                            <input type="text" id="company" class="block w-full border border-gray-300 rounded-md p-2 company" placeholder="Company">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Duration:</label>
+                            <input type="text" id="duration" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Title:</label>
+                            <select id="title" class="block w-full border border-gray-300 rounded-md p-2">
+                                <option value="Mr.">Mr</option>
+                                <option value="Mrs.">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Dr">Dr</option>
+                                <option value="Prof">Prof</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <label class="font-semibold">Contact Name:</label>
+                            <input type="text" id="contact-name" class="block w-full border border-gray-300 rounded-md p-2 contact-name" placeholder="Contact Name">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Contact Surname:</label>
+                            <input type="text" id="contact-surname" class="block w-full border border-gray-300 rounded-md p-2 contact-surname" placeholder="Contact Surname">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Contact Email:</label>
+                            <input type="email" id="contact-email" class="block w-full border border-gray-300 rounded-md p-2 contact-email" placeholder="Contact Email">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Contact Phone:</label>
+                            <input type="tel" id="contact-phone" class="block w-full border border-gray-300 rounded-md p-2 contact-phone" placeholder="Contact Phone">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Contact Position:</label>
+                            <input type="text" id="contact-position" class="block w-full border border-gray-300 rounded-md p-2 contact-position" placeholder="Contact Position">
+                        </div>
+                    </div>
                 </div>
-            `).join('');
-          
-            const workReferencePreview = document.getElementById('preview-work-reference');
-            workReferencePreview.innerHTML = formData.workReference.map(ref => `
-                <div>
-                    <p><strong>${ref.position}</strong> at ${ref.company}</p>
-                    <p>${ref.duration}</p>
-                    <p>Contact: ${ref.contactName} ${ref.contactSurname}</p>
-                    <p>Email: ${ref.contactEmail}, Phone: ${ref.contactPhone}</p>
+            </div>
+            <button id="addPosition" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Position</button>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4"><u>SKILLS</u></h2>
+            <small class="mb-3 block"><em>Click the "Add Skill" button to add</em></small>
+            <div id="skillsContainer" class="border border-gray-300 p-6 mb-6 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="skillInputs">
+                    <!-- Skills will be added here -->
                 </div>
-            `).join('');
+            </div>
+            <button id="addSkill" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Skill</button>
+        </div>
 
-            // Update skills
-            const skillsPreview = document.getElementById('preview-skills');
-            skillsPreview.innerHTML = formData.skills.map(skill => `<li>${skill}</li>`).join('');
-        }
+        <!-- Save Button with Loader -->
+        <div class="flex justify-center">
+            <button id="save" class="flex items-center bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-8 rounded disabled:opacity-50" disabled>
+                <span id="save-text">GENERATE CV</span>
+                <svg id="save-loader" class="w-5 h-5 ml-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
 
-        // Add event listeners to all input fields
-        document.querySelectorAll('input, select, textarea').forEach(field => {
-            field.addEventListener('input', updatePreview);
-        });
-
-       
-        document.getElementById('addEducation').addEventListener('click', () => setTimeout(updatePreview, 0));
-        document.getElementById('addExperience').addEventListener('click', () => setTimeout(updatePreview, 0));
-        document.getElementById('addPosition').addEventListener('click', () => setTimeout(updatePreview, 0));
-        document.getElementById('addSkill').addEventListener('click', () => setTimeout(updatePreview, 0));
-
-            // Collect work reference data
-            const referenceItems = document.querySelectorAll('.work-reference');
-            referenceItems.forEach((item) => {
-                formData.workReference.push({
-                    position: item.querySelector('.position').value,
-                    company: item.querySelector('.company').value,
-                    duration: item.querySelector('.duration').value,
-                    contactName: item.querySelector('.contact-name').value,
-                    contactSurname: item.querySelector('.contact-surname').value,
-                    contactEmail: item.querySelector('.contact-email').value,
-                    contactPhone: item.querySelector('.contact-phone').value,
-                    contactPosition: item.querySelector('.contact-position').value
-                });
-            });
-
-            // Collect skills data
-            const skillInputs = document.querySelectorAll('.skill');
-            skillInputs.forEach((input) => {
-                formData.skills.push(input.value);
-            });
-
-            return formData;
-        }
-
-        // Function to send form data to backend
-        function sendData(formData) {
-    fetch('/generate-cv', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.blob(); // Change to blob() instead of json()
-    })
-    .then(blob => {
-        // Create a URL for the blob
-        const url = window.URL.createObjectURL(blob);
-        // Create a temporary link element
-        const a = document.createElement('a');
-        a.href = url;
-        // Set the download filename
-        a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
-        // Append to body, click, and remove
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        a.remove();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Add better error handling here, perhaps show an error message to the user
-        alert('Failed to generate CV. Please try again.');
-    });
-}
-
-        // Event listener for submit button click
-        document.getElementById('save').addEventListener('click', function() {
-            const formData = collectFormData();
-            sendData(formData);
-        });
-    </script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

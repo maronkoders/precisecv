@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreciseCV </title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./js/workReference.js" defer></script>
+    <script src="./js/education.js" defer></script>
+    <script src="./js/workExperience.js" defer></script>
+    <script src="./js/skills.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+
+        <h1 class="text-2xl font-semibold mb-4"> <u>PreciseCV Maker</u></h1>
+        
+        <!-- Personal Details -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4"><u>Personal Details</u></h2>
+            <div class="grid grid-cols-4 gap-4 border border-gray-300 p-4">
+                <div>
+                    <p class="font-semibold">Name:</p>
+                    <input type="text" id="name" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="John Doe">
+                </div>
+                <div>
+                    <p class="font-semibold">Email:</p>
+                    <input type="email" id="email" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="john.doe@example.com">
+                </div>
+                <div>
+                    <p class="font-semibold">Address:</p>
+                    <input type="text" id="address" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="31 Smith Street, New York, Harare">
+                </div>
+                <div>
+                    <p class="font-semibold">Phone:</p>
+                    <input type="tel" id="phone" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="(263) 775 634 192">
+                </div>
+                <div>
+                    <p class="font-semibold">Date of Birth:</p>
+                    <input type="text" id="dateOfBirth" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="09/07/2000">
+                </div>
+                <div>
+                    <p class="font-semibold">Gender:</p>
+                    <select id="gender" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="font-semibold">Marital Status:</p>
+                    <select id="maritalStatus" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-12" id="educationSection">
+            <h2 class="text-2xl font-semibold mb-4"><u>Educational Background</u></h2>
+            <div id="educationContainer">
+                <div class="education border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <button class="removeEducation absolute top-4 right-4 bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600">Remove</button>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <p class="font-semibold">School Name:</p>
+                            <input type="text" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 school" placeholder="School Name">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Level:</p>
+                            <input type="text" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 level" placeholder="Level">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Duration:</p>
+                            <input type="text" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 duration" placeholder="January 2020 - Present">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="font-semibold mb-2"><u>Grades:</u></p>
+                        <small class="mb-3"><em>Click the "Add Grade" button to add</em></small>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 grade-score-container">
+                            <!-- Grade Entries Will Be Added Here -->
+                        </div>
+                        <button class="addGrade mt-4 bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Add Grade</button>
+                    </div>
+                </div>
+            </div>
+            <button id="addEducation" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Education</button>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="mb-12" id="workExperienceSection">
+            <h2 class="text-2xl font-semibold mb-4"><u>Work Experience</u></h2>
+            <div id="workExperienceContainer">
+                <div class="work-experience border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <button class="removeExperience absolute top-4 right-4 bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600">Remove</button>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <p class="font-semibold">Position:</p>
+                            <input type="text" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 position" placeholder="Position">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Company:</p>
+                            <input type="text" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 company" placeholder="Company">
+                        </div>
+                        <div>
+                            <p class="font-semibold">Duration:</p>
+                            <input type="text" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 duration" placeholder="January 2020 - Present">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="font-semibold">Responsibility:</p>
+                        <textarea class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 responsibility mt-2" rows="4" placeholder="Responsibility"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button id="addExperience" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Experience</button>
+        </div>
+
+        <!-- Work Reference -->
+        <div class="mb-12" id="workReferenceSection">
+            <h2 class="text-2xl font-semibold mb-4"><u>Work Reference</u></h2>
+            <div id="workReferenceContainer">
+                <div class="work-reference border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <button class="removeReference absolute top-4 right-4 bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-600">Remove</button>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div>
+                            <label for="position" class="block font-semibold">Position:</label>
+                            <input type="text" id="position" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 position" placeholder="Position">
+                        </div>
+                        <div>
+                            <label for="company" class="block font-semibold">Company:</label>
+                            <input type="text" id="company" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 company" placeholder="Company">
+                        </div>
+                        <div>
+                            <label for="duration" class="block font-semibold">Duration:</label>
+                            <input type="text" id="duration" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 duration" placeholder="January 2020 - Present">
+                        </div>
+                        <div>
+                            <label for="title" class="block font-semibold">Title:</label>
+                            <select id="title" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="Mr.">Mr</option>
+                                <option value="Mrs.">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Dr">Dr</option>
+                                <option value="Prof">Prof</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <label for="contact-name" class="block font-semibold">Contact Name:</label>
+                            <input type="text" id="contact-name" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 contact-name" placeholder="Contact Name">
+                        </div>
+                        <div>
+                            <label for="contact-surname" class="block font-semibold">Contact Surname:</label>
+                            <input type="text" id="contact-surname" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 contact-surname" placeholder="Contact Surname">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block font-semibold">Contact Email:</label>
+                            <input type="email" id="contact-email" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 contact-email" placeholder="Contact Email">
+                        </div>
+                        <div>
+                            <label for="contact-phone" class="block font-semibold">Contact Phone:</label>
+                            <input type="tel" id="contact-phone" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 contact-phone" placeholder="Contact Phone">
+                        </div>
+                        <div>
+                            <label for="contact-position" class="block font-semibold">Contact Position:</label>
+                            <input type="text" id="contact-position" class="block w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 contact-position" placeholder="Contact Position">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="addPosition" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Position</button>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4"><u>Skills</u></h2>
+            <small class="mb-3 block"><em>Click the "Add Skill" button to add</em></small>
+            <div id="skillsContainer" class="border border-gray-300 p-6 mb-6 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="skillInputs">
+                    <!-- Skills will be added here -->
+                </div>
+            </div>
+            <button id="addSkill" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Add Skill</button>
+        </div>
+
+        <div class="flex justify-center">
+            <button id="save" class="flex items-center bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-8 rounded disabled:opacity-50" disabled>
+                <span id="save-text">MAKE CV</span>
+                <!-- Loader -->
+                <svg id="save-loader" class="w-5 h-5 ml-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <script>
+
+        function clearFormFields() {
+            document.querySelectorAll('input, select, textarea').forEach(field => {
+                if (field.type === 'select-one') {
+                    field.selectedIndex = 0; // Reset select fields to the first option
+                } else {
+                    field.value = ''; // Clear input and textarea fields
+                }
+            });
+        }
+
+        flatpickr("#dateOfBirth", {
+            dateFormat: "Y-m-d", // Date format
+            altInput: true, // Show a readable date input
+            altFormat: "F j, Y", 
+            maxDate: new Date().setFullYear(new Date().getFullYear() - 18) // Set maxDate to 18 years ago
+        });
+
+        /**
+         * Collects form data, including grades for each education entry.
+         */
+        function collectFormData() {
+            const formData = {
+                personalDetails: {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value,
+                    phone: document.getElementById('phone').value,
+                    dateOfBirth: document.getElementById('dateOfBirth').value,
+                    gender: document.getElementById('gender').value,
+                    maritalStatus: document.getElementById('maritalStatus').value
+                },
+                education: [],
+                workExperience: [],
+                workReference: [],
+                skills: [],
+            };
+
+            // Collect education data
+            const educationItems = document.querySelectorAll('.education');
+            educationItems.forEach((item) => {
+                const educationData = {
+                    school: item.querySelector('.school').value,
+                    level: item.querySelector('.level').value,
+                    duration: item.querySelector('.duration').value,
+                    grades: []
+                };
+
+                // Collect grades for this education entry
+                const gradeContainers = item.querySelectorAll('.grade-entry');
+                gradeContainers.forEach((grade) => {
+                    const subject = grade.querySelector('.grade-subject').value;
+                    const score = grade.querySelector('.grade-score').value;
+                    educationData.grades.push({
+                        subject: subject,
+                        score: score
+                    });
+                });
+
+                formData.education.push(educationData);
+            });
+
+            // Collect work experience data
+            const experienceItems = document.querySelectorAll('.work-experience');
+            experienceItems.forEach((item) => {
+                formData.workExperience.push({
+                    position: item.querySelector('.position').value,
+                    company: item.querySelector('.company').value,
+                    duration: item.querySelector('.duration').value,
+                    responsibility: item.querySelector('.responsibility').value
+                });
+            });
+
+            // Collect work reference data
+            const referenceItems = document.querySelectorAll('.work-reference');
+            referenceItems.forEach((item) => {
+                formData.workReference.push({
+                    position: item.querySelector('.position').value,
+                    company: item.querySelector('.company').value,
+                    duration: item.querySelector('.duration').value,
+                    contactName: item.querySelector('.contact-name').value,
+                    contactSurname: item.querySelector('.contact-surname').value,
+                    contactEmail: item.querySelector('.contact-email').value,
+                    contactPhone: item.querySelector('.contact-phone').value,
+                    contactPosition: item.querySelector('.contact-position').value
+                });
+            });
+
+            // Collect skills data
+            const skillInputs = document.querySelectorAll('.skill');
+            skillInputs.forEach((input) => {
+                if (input.value.trim() !== "") {
+                    formData.skills.push(input.value.trim());
+                }
+            });
+
+            return formData;
+        }
+
+        // Function to send form data to backend
+        function sendData(formData) {
+            console.log(formData);
+            fetch('/generate-cv', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob(); // Change to blob() instead of json()
+            })
+            .then(blob => {
+                // Create a URL for the blob
+                const url = window.URL.createObjectURL(blob);
+                // Create a temporary link element
+                const a = document.createElement('a');
+                a.href = url;
+                // Set the download filename
+                a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
+                // Append to body, click, and remove
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                a.remove();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Add better error handling here, perhaps show an error message to the user
+                alert('Failed to generate CV. Please try again.');
+            })
+            .finally(() => {
+                // Re-enable the button and hide the loader
+                const saveButton = document.getElementById('save');
+                saveButton.disabled = false;
+                document.getElementById('save-loader').classList.add('hidden');
+                document.getElementById('save-text').classList.remove('hidden');
+            });
+        }
+
+        // Event listener for submit button click
+        document.getElementById('save').addEventListener('click', function() {
+            const saveButton = document.getElementById('save');
+            const saveText = document.getElementById('save-text');
+            const saveLoader = document.getElementById('save-loader');
+
+            // Disable the button and show the loader
+            saveButton.disabled = true;
+            saveText.classList.add('hidden');
+            saveLoader.classList.remove('hidden');
+
+            const formData = collectFormData();
+            sendData(formData);
+        });
+
+        // Optional: Enable the button when the page is fully loaded
+        window.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('save').disabled = false;
+        });
+
+    </script>
+</body>
+</html>
