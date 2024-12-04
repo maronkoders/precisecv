@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         <div class="grid grid-cols-3 gap-4">
                 <div>
-                    <p class="font-semibold  mt-2">Position:</p>
+                    <label class="font-semibold">Position:</label>
                     <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position">
                 </div>
                 <div>
-                    <p class="font-semibold mt-2">Company:</p>
+                    <label class="font-semibold">Company:</label>
                     <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company " placeholder="Company">
                 </div>
                 <div>
-                    <p class="font-semibold mt-2">Duration:</p>
+                    <label class="font-semibold">Duration:</label>
                     <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
                 </div>
             </div>
