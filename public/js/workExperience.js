@@ -11,29 +11,29 @@ document.addEventListener('DOMContentLoaded', function() {
         workExperience.classList.add('mt-2');
         workExperience.innerHTML = `
         <div class="relative">
-                <div class="relative mt-4">
                 <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
             </div>
-        <div class="grid grid-cols-3 gap-4">
-                <div>
-                    <label class="font-semibold">Position:</label>
-                    <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position">
-                </div>
-                <div>
-                    <label class="font-semibold">Company:</label>
-                    <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company " placeholder="Company">
-                </div>
-                <div>
-                    <label class="font-semibold">Duration:</label>
-                    <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
-                </div>
-            </div>
 
-            <p class="font-semibold mt-2">Responsibility:</p>
-            <textarea class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow responsibility mt-2" rows="4" cols="50" placeholder="Responsibility"></textarea>
-          
-            </div>
-           
+                 <div class="work-experience border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="font-semibold">Position:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 position" placeholder="Position">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Company:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 company" placeholder="Company">
+                        </div>
+                        <div>
+                            <label class="font-semibold">Duration:</label>
+                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="font-semibold">Responsibility:</label>
+                        <textarea class="block w-full border border-gray-300 rounded-md p-2 responsibility" rows="4" placeholder="Responsibility"></textarea>
+                    </div>
+                </div>
         `;
         workExperienceContainer.appendChild(workExperience);
 

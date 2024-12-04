@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
         workReference.classList.add('p-4');
         workReference.classList.add('mt-2');
         workReference.innerHTML = `
-        <div class="relative mb-2"><button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-                                </div>
+        <div class="relative">
+        <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
+        </div>
 
-                                 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                         <div class="work-reference border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="font-semibold">Position:</label>
                             <input type="text" id="position" class="block w-full border border-gray-300 rounded-md p-2 position" placeholder="Position">
@@ -59,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="text" id="contact-position" class="block w-full border border-gray-300 rounded-md p-2 contact-position" placeholder="Contact Position">
                         </div>
                     </div>
-
+                </div>
              
                 
                  
-      
+    
          
         `;
         workReferenceContainer.appendChild(workReference);

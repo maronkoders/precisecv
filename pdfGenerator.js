@@ -112,6 +112,7 @@ function createCV(data) {
         });
 
 
+        if (ed.grades && ed.grades.length > 0) {
           doc.font('Times-Roman').text('Grades:');
           ed.grades.map(grade => {
             doc.font('Times-Roman').fontSize(12).text(`${grade.subject}`, {
@@ -120,6 +121,7 @@ function createCV(data) {
               align: 'right'
             });
           });
+        }
       });
 
 
