@@ -55,6 +55,11 @@ app.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/dashboard', (req, res) => {
+  return res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+
 
 app.post('/generate-cv', (req, res) => {
   const data = req.body;
@@ -74,7 +79,6 @@ app.post('/generate-cv', (req, res) => {
 
   pdfGenerator.createCV(data)
     .then(() => {
-      // Then send the file
       res.sendFile(filePath, (err) => {
         if (err) {
           console.error('Error sending file:', err);
