@@ -5,7 +5,6 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const useragent = require('useragent');
 const pdfGenerator = require('./pdfGenerator.js');
-const sData = require('./sampleData.json');
 const path = require('path');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
@@ -24,9 +23,9 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Copybay API',
+      title: 'Precise CV API',
       version: '1.0.0',
-      description: 'REST API for Copybay',
+      description: 'REST API for Precise CV',
     },
     servers: [
       {
@@ -92,8 +91,6 @@ app.post('/generate-cv', (req, res) => {
       console.error('Error generating PDF:', err);
       res.status(500).send('Error generating PDF');
     });
-
-
 });
 
 app.listen(PORT, () => {
