@@ -197,11 +197,17 @@ function createCV(data) {
       doc.moveDown();
       doc.moveDown();
       // Add a section for Skills
-      doc.font('Times-Roman').fontSize(14).text('Skills'.toUpperCase(), {
-        underline: true
-      });
-      doc.moveDown();
-      doc.font('Times-Roman').fontSize(12).list(data.skills);
+     
+
+      if (data.skills && data.skills.length > 0) {
+        doc.font('Times-Roman').fontSize(14).text('Skills'.toUpperCase(), {
+          underline: true
+        });
+        doc.moveDown();
+        doc.font('Times-Roman').fontSize(12).list(data.skills);
+      }
+
+    
 
       doc.end();
 
