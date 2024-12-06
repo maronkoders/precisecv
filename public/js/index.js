@@ -110,36 +110,33 @@ function sendData(formData) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        // Get the content type from the response
+        // Log the content type for debugging
         const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/pdf')) {
-            throw new Error('Received non-PDF response from server');
-        }
-        return response.arrayBuffer(); // Use arrayBuffer instead of blob
+        console.log('Received content-type:', contentType);
+        
+        // Continue with the download regardless of content-type
+        return response.arrayBuffer();
     })
     .then(buffer => {
-        // Convert array buffer to blob with explicit PDF type
-        const blob = new Blob([buffer], { type: 'application/pdf' });
+        // Create blob without strict type checking
+        const blob = new Blob([buffer]);
         const url = window.URL.createObjectURL(blob);
         
-        // Create download link
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
         a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
         
-        // Trigger download
         document.body.appendChild(a);
         a.click();
         
-        // Cleanup
         setTimeout(() => {
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
         }, 100);
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Error details:', error);
         alert('Failed to generate CV. Please try again.');
     })
     .finally(() => {
