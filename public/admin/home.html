@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Dashboard</h1>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Total Users Card -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-xl font-semibold">Total Users</h2>
+                <p class="text-3xl font-bold">1,234</p>
+            </div>
+
+            <!-- Total Downloads Card -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-xl font-semibold">Total Downloads</h2>
+                <p class="text-3xl font-bold">5,678</p>
+            </div>
+
+            <!-- Total Revenue Card -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-xl font-semibold">Total Revenue</h2>
+                <p class="text-3xl font-bold">$12,345</p>
+            </div>
+
+            <!-- User Locations Card -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-xl font-semibold">User Locations</h2>
+                <ul class="list-disc pl-5">
+                    <li>USA</li>
+                    <li>Canada</li>
+                    <li>UK</li>
+                    <li>Australia</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

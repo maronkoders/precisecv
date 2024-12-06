@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/dashboard', (req, res) => {
-  return res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+  return res.sendFile(path.join(__dirname, 'public', 'admin', 'home.html'));
 });
 
 

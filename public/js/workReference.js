@@ -2,19 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const addButton = document.getElementById('addPosition');
     const workReferenceContainer = document.getElementById('workReferenceContainer');
 
-    addButton.addEventListener('click', function() {
+    addButton.addEventListener('click', function(event) {
         const workReference = document.createElement('div');
-        workReference.classList.add('work-reference');
-        workReference.classList.add('border');
-        workReference.classList.add('border-gray-300');
-        workReference.classList.add('p-4');
-        workReference.classList.add('mt-2');
         workReference.innerHTML = `
-        <div class="relative">
-        <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-        </div>
-
-                         <div class="work-reference border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                <div class="work-reference  border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
+                         <button class="absolute bg-red-500 right-3 top-1 text-white text-xs px-2 py-1 rounded flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                </svg>
+                REMOVE
+            </button>
+              <hr class="my-4" />
                     <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                         <div>
                             <label class="font-semibold">Position:</label>
@@ -63,13 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
              
-                
-                 
-    
-         
         `;
         workReferenceContainer.appendChild(workReference);
-
         const removeButton = workReference.querySelector('.relative button');
         removeButton.addEventListener('click', function() {
             workReference.remove();
