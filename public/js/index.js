@@ -101,8 +101,7 @@ function sendData(formData) {
     fetch('/generate-cv', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/pdf'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
     })
@@ -110,33 +109,20 @@ function sendData(formData) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        // Log the content type for debugging
-        const contentType = response.headers.get('content-type');
-        console.log('Received content-type:', contentType);
-        
-        // Continue with the download regardless of content-type
-        return response.arrayBuffer();
+        return response.blob();
     })
-    .then(buffer => {
-        // Create blob without strict type checking
-        const blob = new Blob([buffer]);
+    .then(blob => {
         const url = window.URL.createObjectURL(blob);
-        
         const a = document.createElement('a');
-        a.style.display = 'none';
         a.href = url;
         a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
-        
         document.body.appendChild(a);
         a.click();
-        
-        setTimeout(() => {
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-        }, 100);
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
     })
     .catch(error => {
-        console.error('Error details:', error);
+        console.error('Error:', error);
         alert('Failed to generate CV. Please try again.');
     })
     .finally(() => {
