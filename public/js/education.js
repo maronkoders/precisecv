@@ -7,14 +7,11 @@ document.addEventListener('click', function(event) {
 
         newGrade.innerHTML = `
 
-            <input type="text" class="block w-1/2 bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 grade-subject" placeholder="Subject">
+           <input type="text" class="block w-1/2 bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 grade-subject" placeholder="Subject">
             <input type="text" class="block w-1/2 bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 grade-score" placeholder="Score">
-            <button class="removeGrade  absolute bg-red-500 left-0 top-1 text-white text-xs px-2 py-1 rounded flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
-                </svg>
-                REMOVE
-            </button>
+            <button class="removeGrade bg-red-400 hover:bg-red-500 text-white px-3 py-1 rounded-md">
+              
+            Remove</button>
         `;
         gradeContainer.appendChild(newGrade);
     }
@@ -66,14 +63,12 @@ document.getElementById('addEducation').addEventListener('click', function() {
         </div>
         <div class="mt-6">
             <p class="font-semibold mb-2"><u>Grades:</u></p>
-            <small class="mb-3 block"><em>Click the "+" button to add a grade</em></small>
+            <small class="mb-3 block"><em>Click the "Add Grade" button to add a grade</em></small>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 grade-score-container">
                 
             </div>
             <button class="addGrade mt-1 bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
+              ADD GRADE
             </button>
         </div>
     `;
