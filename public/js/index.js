@@ -98,11 +98,11 @@ function collectFormData() {
 
 // Function to send form data to backend
 function sendData(formData) {
-    console.log(formData);
     fetch('/generate-cv', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/pdf'
         },
         body: JSON.stringify(formData)
     })
@@ -110,29 +110,39 @@ function sendData(formData) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.blob(); // Change to blob() instead of json()
+        // Get the content type from the response
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/pdf')) {
+            throw new Error('Received non-PDF response from server');
+        }
+        return response.arrayBuffer(); // Use arrayBuffer instead of blob
     })
-    .then(blob => {
-        // Create a URL for the blob
+    .then(buffer => {
+        // Convert array buffer to blob with explicit PDF type
+        const blob = new Blob([buffer], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);
-        // Create a temporary link element
+        
+        // Create download link
         const a = document.createElement('a');
+        a.style.display = 'none';
         a.href = url;
-        // Set the download filename
         a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
-        // Append to body, click, and remove
+        
+        // Trigger download
         document.body.appendChild(a);
         a.click();
-        window.URL.revokeObjectURL(url);
-        a.remove();
+        
+        // Cleanup
+        setTimeout(() => {
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }, 100);
     })
     .catch(error => {
         console.error('Error:', error);
-        // Add better error handling here, perhaps show an error message to the user
         alert('Failed to generate CV. Please try again.');
     })
     .finally(() => {
-        // Re-enable the button and hide the loader
         const saveButton = document.getElementById('save');
         saveButton.disabled = false;
         document.getElementById('save-loader').classList.add('hidden');
