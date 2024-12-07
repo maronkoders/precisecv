@@ -197,6 +197,11 @@ function createCV(data) {
       stream_.on('error', reject);
       doc.pipe(stream_);
 
+      doc.on('error', (err) => {
+        console.error('PDF generation error:', err);
+        reject(err);
+      });
+
     } catch (error) {
       reject(error);
     }
