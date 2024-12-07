@@ -71,9 +71,8 @@ app.post('/generate-cv', (req, res) => {
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-
+  
   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
-  pdfGenerator.createCV(data);
   const outputName = `${data.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}`;
   const filePath = path.join(__dirname, 'public', 'generated-pdfs', `${outputName}.pdf`);
 
