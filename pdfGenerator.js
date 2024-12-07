@@ -11,7 +11,7 @@ function createCV(data) {
     try {
       const doc = new PDFDocument();
       const outputName = `${data.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}`;
-      const pdfDir = path.join(__dirname, 'public', 'generated-pdfs');
+      const pdfDir = path.join(__dirname);
       if (!fs.existsSync(pdfDir)){
           fs.mkdirSync(pdfDir, { recursive: true });
       }
@@ -31,7 +31,6 @@ function createCV(data) {
                 .stroke(); // Draw the border
       });
 
-      // Add title
       doc.fontSize(25).text(`${data.personalDetails.name}`.toUpperCase(), {
         align: 'center'
       });
