@@ -9,29 +9,16 @@ function capitalizeFirstLetter(string) {
 function createCV(data) { 
   return new Promise((resolve, reject) => {
     try {
-      // Create a document
       const doc = new PDFDocument();
-
-      // Pipe its output somewhere, like to a file or HTTP response
       const outputName = `${data.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}`;
-      const pdfDir = path.join(__dirname, 'public', 'generated-pdfs');
+      const pdfDir = path.join(__dirname);
       if (!fs.existsSync(pdfDir)){
           fs.mkdirSync(pdfDir, { recursive: true });
       }
       const filePath = path.join(pdfDir, `${outputName}.pdf`);
-      const stream = fs.createWriteStream(filePath);
-      
-      // Handle stream events
-      stream.on('finish', () => resolve(filePath));
-      stream.on('error', reject);
-      
-      doc.pipe(stream);
-
-      // Set the border properties
+      const stream_ = fs.createWriteStream(filePath);
       const borderWidth = 10;
       const borderColor = '#000000'; // Black color
-
-      // Draw a rectangle around the entire content area of the document
       doc.rect(borderWidth, borderWidth, doc.page.width - 2 * borderWidth, doc.page.height - 2 * borderWidth)
           .lineWidth(1) // Border width
           .strokeColor(borderColor) // Border color
@@ -44,7 +31,6 @@ function createCV(data) {
                 .stroke(); // Draw the border
       });
 
-      // Add title
       doc.fontSize(25).text(`${data.personalDetails.name}`.toUpperCase(), {
         align: 'center'
       });
@@ -206,10 +192,15 @@ function createCV(data) {
         doc.moveDown();
         doc.font('Times-Roman').fontSize(12).list(data.skills);
       }
-
-    
-
       doc.end();
+      stream_.on('finish', () => resolve(filePath));
+      stream_.on('error', reject);
+      doc.pipe(stream_);
+
+      doc.on('error', (err) => {
+        console.error('PDF generation error:', err);
+        reject(err);
+      });
 
     } catch (error) {
       reject(error);

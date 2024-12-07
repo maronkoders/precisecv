@@ -98,7 +98,6 @@ function collectFormData() {
 
 // Function to send form data to backend
 function sendData(formData) {
-    console.log(formData);
     fetch('/generate-cv', {
         method: 'POST',
         headers: {
@@ -110,29 +109,23 @@ function sendData(formData) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.blob(); // Change to blob() instead of json()
+        return response.blob();
     })
     .then(blob => {
-        // Create a URL for the blob
         const url = window.URL.createObjectURL(blob);
-        // Create a temporary link element
         const a = document.createElement('a');
         a.href = url;
-        // Set the download filename
         a.download = `${formData.personalDetails.name.toLowerCase().replace(/\s+/g, '_')}.pdf`;
-        // Append to body, click, and remove
         document.body.appendChild(a);
         a.click();
+        document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-        a.remove();
     })
     .catch(error => {
         console.error('Error:', error);
-        // Add better error handling here, perhaps show an error message to the user
         alert('Failed to generate CV. Please try again.');
     })
     .finally(() => {
-        // Re-enable the button and hide the loader
         const saveButton = document.getElementById('save');
         saveButton.disabled = false;
         document.getElementById('save-loader').classList.add('hidden');
