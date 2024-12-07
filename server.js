@@ -72,7 +72,7 @@ app.post('/generate-cv', (req, res) => {
 
   pdfGenerator.createCV(data)
     .then(() => {
-      res.sendFile(filePath, (err) => {
+      res.download(filePath, `${outputName}.pdf`, (err) => {
         if (err) {
           console.error('Error sending file:', err);
           res.status(500).send('Error generating PDF');
