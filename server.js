@@ -60,6 +60,72 @@ app.get('/dashboard', (req, res) => {
 });
 
 
+app.get('/sample', (req, res) => {
+  const PDFDocument = require('pdfkit');
+const fs = require('fs');
+
+// Create a new PDF document
+const doc = new PDFDocument();
+
+// Pipe the PDF document to a file
+doc.pipe(fs.createWriteStream('sample.pdf'));
+
+// Add content to the PDF
+doc.fontSize(25)
+   .text('Hello, PDFKit!', 100, 100);
+
+doc.fontSize(12)
+   .text('This is a simple PDF generated using PDFKit.', 100, 150);
+
+// Add some styling and additional elements
+doc.moveDown()
+   .fillColor('blue')
+   .text('PDFKit makes PDF creation easy!', 100, 200);
+
+// Draw a rectangle
+doc.rect(100, 250, 200, 50)
+   .stroke();
+
+// Add an image (optional - requires image file)
+// doc.image('path/to/image.jpg', 100, 320, { width: 200 });
+
+// Finalize the PDF
+doc.end();
+
+console.log('PDF generated successfully!');
+});
+
+app.get('/download-pdf', (req, res) => {
+  // Create a new PDF document
+  const doc = new PDFDocument();
+
+  // Set headers for PDF download
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', 'attachment; filename=sample.pdf');
+
+  // Pipe the PDF directly to the response
+  doc.pipe(res);
+
+  // Add content to the PDF
+  doc.fontSize(25)
+     .text('Downloadable PDF', 100, 100);
+
+  doc.fontSize(12)
+     .text('This PDF is generated and downloaded dynamically.', 100, 150);
+
+  doc.moveDown()
+     .fillColor('blue')
+     .text('Created with Express and PDFKit', 100, 200);
+
+  // Draw a rectangle
+  doc.rect(100, 250, 200, 50)
+     .stroke();
+
+  // Finalize the PDF
+  doc.end();
+});
+
+
 
 app.post('/generate-cv', (req, res) => {
   const data = req.body;
