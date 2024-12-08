@@ -1,2 +1,3 @@
 *.pdf
 public/generated-pdfs/*
+node_modules/
