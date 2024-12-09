@@ -40,17 +40,7 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.static(path.join(__dirname, 'public')));
-
-  /**
-    * @openapi
-    * /:
-    *   get:
-    *     description: Initial page to the API
-    *     responses:
-    *       200:
-    *         description: Returns a mysterious string.
-    */
-
+//SWagger API
 app.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
