@@ -6,6 +6,33 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function isValidWorkData(item) {
+  return Object.values(item).every(value => 
+    value !== null && 
+    value !== undefined && 
+    value.toString().trim() !== ''
+  );
+}
+
+function isValidWorkReferenceData(item) {
+  const requiredFields = [
+    'position',
+    'company',
+    'duration',
+    'contactName',
+    'contactSurname',
+    'contactPosition',
+    'contactPhone',
+    'contactEmail'
+  ];
+  
+  return requiredFields.every(field => 
+    item[field] !== null && 
+    item[field] !== undefined && 
+    item[field].toString().trim() !== ''
+  );
+}
+
 function createCV(data) { 
   return new Promise((resolve, reject) => {
     try {
@@ -121,59 +148,77 @@ function createCV(data) {
       doc.moveDown();
         
       // Add a section for Experience
-      doc.font('Times-Roman').fontSize(14).text('Work Experience'.toUpperCase(), {
-          underline: true
-      });
+      if (data.workExperience && 
+          data.workExperience.length > 0 && 
+          data.workExperience.some(isValidWorkData)) {
+        doc.font('Times-Roman').fontSize(14).text('Work Experience'.toUpperCase(), {
+            underline: true
+        });
 
-      const workExperience = data.workExperience;
-      doc.moveDown();
-        
-      workExperience.map(wE => {
-          doc.font('Times-Roman').fontSize(12).text(`${wE.position}`, {
-            continued: true
-          }).font('Times-Roman').text(`${wE.company}`, {
-            align: 'right'
-          });
-          doc.font('Times-Roman').text(`${wE.duration}`, {
-            align: 'right'
-          });
-        
-      });
-       
-      doc.moveDown();
-      // Add a horizontal line
-      doc.moveTo(50, doc.y + 15)
-          .lineTo(550, doc.y + 15)
-          .stroke();
+        doc.moveDown();
           
-      doc.moveDown();
-      doc.moveDown();
-          
-      const workReference = data.workReference
+        data.workExperience
+          .filter(isValidWorkData)
+          .map(wE => {
+            doc.font('Times-Roman').fontSize(12).text(`${wE.position}`, {
+              continued: true
+            }).font('Times-Roman').text(`${wE.company}`, {
+              align: 'right'
+            });
+            doc.font('Times-Roman').text(`${wE.duration}`, {
+              align: 'right'
+            });
+          });
+        
+        doc.moveDown();
+        // Add a horizontal line
+        doc.moveTo(50, doc.y + 15)
+            .lineTo(550, doc.y + 15)
+            .stroke();
+            
+        doc.moveDown();
+        doc.moveDown();
+      }
+            
       // Add a section for Reference
-      doc.font('Times-Roman').fontSize(14).text('Work Reference'.toUpperCase(), {
-          underline: true
-      });
-      doc.moveDown();
+      if (data.workReference && 
+          data.workReference.length > 0 && 
+          data.workReference.some(isValidWorkReferenceData)) {
+        doc.font('Times-Roman').fontSize(14).text('Work Reference'.toUpperCase(), {
+            underline: true
+        });
+        doc.moveDown();
 
-      workReference.map(wr => {
-          doc.font('Times-Roman').fontSize(12).text(`${wr.position}`, {
-            continued: true
-          }).font('Times-Roman').text(`${wr.company}`, {
-            align: 'right'
-          });
-          doc.font('Times-Roman').text(`${wr.duration}`, {
-            align: 'right'
+        data.workReference
+          .filter(isValidWorkReferenceData)
+          .map(wr => {
+            doc.font('Times-Roman').fontSize(12).text(`${wr.position}`, {
+              continued: true
+            }).font('Times-Roman').text(`${wr.company}`, {
+              align: 'right'
+            });
+            doc.font('Times-Roman').text(`${wr.duration}`, {
+              align: 'right'
+            });
+            
+            doc.font('Times-Roman').text('Contact Details:');
+            doc.font('Times-Roman').list([
+              `${wr.contactName} ${wr.contactSurname}  (${wr.contactPosition})`,
+              `${wr.contactPhone}`,
+              `${wr.contactEmail}`,
+            ]);
           });
           
-          doc.font('Times-Roman').text('Contact Details:');
-          doc.font('Times-Roman').list([
-            `${wr.contactName} ${wr.contactSurname}  (${wr.contactPosition})`,
-            `${wr.contactPhone}`,
-            `${wr.contactEmail}`,
-          ]);
-      })
-        
+        doc.moveDown();
+        // Add a horizontal line
+        doc.moveTo(50, doc.y + 15)
+            .lineTo(550, doc.y + 15)
+            .stroke();
+            
+        doc.moveDown();
+        doc.moveDown();
+      }
+
       doc.moveDown();
       // Add a horizontal line
       doc.moveTo(50, doc.y + 15)
