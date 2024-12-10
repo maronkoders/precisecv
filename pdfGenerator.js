@@ -219,14 +219,6 @@ function createCV(data) {
         doc.moveDown();
       }
 
-      doc.moveDown();
-      // Add a horizontal line
-      doc.moveTo(50, doc.y + 15)
-          .lineTo(550, doc.y + 15)
-          .stroke();
-          
-      doc.moveDown();
-      doc.moveDown();
       // Add a section for Skills
      
 
