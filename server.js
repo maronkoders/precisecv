@@ -49,6 +49,10 @@ app.get('/dashboard', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'admin', 'home.html'));
 });
 
+app.get('/stitch_sense/privacy', (req, res) => {
+  return res.sendFile(path.join(__dirname, 'public', 'stitch_sense', 'privacy.html'));
+});
+
 
 
 app.post('/generate-cv', (req, res) => {
