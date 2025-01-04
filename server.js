@@ -53,6 +53,9 @@ app.get('/stitch_sense/privacy', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'stitch_sense', 'privacy.html'));
 });
 
+app.get('/mart_pos/privacy', (req, res) => {
+  return res.sendFile(path.join(__dirname, 'public', 'mart_pos', 'privacy.html'));
+});
 
 
 app.post('/generate-cv', (req, res) => {
