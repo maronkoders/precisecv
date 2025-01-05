@@ -13,9 +13,11 @@
             <div class="flex justify-between items-center h-16">
                 <div class="text-2xl font-bold text-indigo-600">PreciseCV</div>
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-indigo-600">Tools</a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600">Pricing</a>
+                    <!-- <a href="#" class="text-gray-600 hover:text-indigo-600">Tools</a> -->
+                    <a href="#howitworks" class="text-gray-600 hover:text-indigo-600">How it works</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-indigo-600">Pricing</a>
                     <a href="#faq" class="text-gray-600 hover:text-indigo-600">FAQ</a>
+                    <a href="#reviews" class="text-gray-600 hover:text-indigo-600">Reviews</a>
                 </nav>
                 <div class="flex space-x-4">
                     <a href="login" class="text-gray-600 px-4 py-2 hover:text-indigo-600">Log in</a>
@@ -55,7 +57,7 @@
         </section>
 
         <!-- How It Works -->
-        <section class="py-16 bg-gray-50">
+        <section class="py-16 bg-gray-50" id="howitworks">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">How it works</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -76,7 +78,65 @@
         </section>
 
         <!-- Reviews Section -->
-        <section class="py-16 bg-white">
+   
+
+        <!-- Pricing Section -->
+        <section class="py-16 bg-gray-50" id="pricing">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Pricing Plans</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    <!-- Free Tier -->
+                    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3">
+                        <h3 class="text-xl font-bold mb-4 text-center">Free Tier</h3>
+                        <p class="text-gray-600 mb-4 text-center">Basic access to essential features.</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-4">
+                            <li>Basic Templates</li>
+                            <li>Basic Editing Tools</li>
+                            <li>Download in One Format (PDF)</li>
+                            <li>Limit on Number of Resumes</li>
+                            <li>Have a Watermark</li>
+                        </ul>
+                        <p class="text-2xl font-bold text-center">Free</p>
+                    </div>
+                    <!-- Premium Monthly Tier -->
+                    <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3">
+                        <h3 class="text-xl font-bold mb-4 text-center">Premium Monthly</h3>
+                        <p class="text-gray-600 mb-4 text-center">Enhanced features for serious users.</p>
+                        <ul class="list-disc list-inside text-gray-600 mb-4">
+                            <li>Access to Premium Templates</li>
+                            <li>Advanced Editing Tools</li>
+                            <li>Unlimited Resumes</li>
+                            <li>No Watermark Branding</li>
+                            <li>Cover Letter Builder</li>
+                        </ul>
+                        <p class="text-2xl font-bold text-center">$1.99/month</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+          <!-- FAQ Section -->
+          <section class="py-16 bg-gray-50" id="faq">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-semibold mb-2">What is a resume?</h3>
+                        <p class="text-gray-600">A resume is a formal document that summarizes your professional background, skills, and accomplishments.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-semibold mb-2">How do I format my resume?</h3>
+                        <p class="text-gray-600">Our platform automatically formats your resume professionally. Just input your information and choose a template.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-semibold mb-2">Can I download my resume as PDF?</h3>
+                        <p class="text-gray-600">Yes, you can download your resume in PDF format, ensuring it looks consistent across all devices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white" id="reviews">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">What our users say</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -103,27 +163,6 @@
                         </div>
                         <p class="text-gray-600 mb-4">"Professional templates and easy to use. Exactly what I needed."</p>
                         <div class="font-semibold">Emma Williams</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="py-16 bg-gray-50" id="faq">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="font-semibold mb-2">What is a resume?</h3>
-                        <p class="text-gray-600">A resume is a formal document that summarizes your professional background, skills, and accomplishments.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="font-semibold mb-2">How do I format my resume?</h3>
-                        <p class="text-gray-600">Our platform automatically formats your resume professionally. Just input your information and choose a template.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="font-semibold mb-2">Can I download my resume as PDF?</h3>
-                        <p class="text-gray-600">Yes, you can download your resume in PDF format, ensuring it looks consistent across all devices.</p>
                     </div>
                 </div>
             </div>
