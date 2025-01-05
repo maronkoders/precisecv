@@ -3,125 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to PreciseCV</title>
+    <title>Professional Resume Builder</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Add FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-b from-white to-gray-100">
-    <!-- Modern minimal header -->
-    <header class="bg-white shadow-sm fixed w-full z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600">PreciseCV</h1>
-            <nav class="space-x-6">
-                <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
-                <a href="#templates" class="text-gray-600 hover:text-blue-600">Templates</a>
-                <a href="cv-builder.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
-                    Create Resume
-                </a>
-            </nav>
+<body class="bg-gray-50">
+    <header class="bg-white border-b border-gray-200 fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold text-indigo-600">PreciseCV</div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-indigo-600">Tools</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600">Pricing</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600">FAQ</a>
+                </nav>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 px-4 py-2 hover:text-indigo-600">Log in</a>
+                    <a href="cv-builder.html" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Create Resume</a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="pt-20">
-        <!-- Hero Section with Modern Layout -->
-        <section class="container mx-auto px-4 py-16 flex flex-col items-center text-center">
-            <h2 class="text-5xl font-bold mb-6">Build a professional resume<br>for free</h2>
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl">
-                Create resumes that get noticed simple, easy, fast, free
-            </p>
-            <div class="flex gap-4">
-                <a href="cv-builder.html" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 flex items-center">
-                    Start Building <i class="fas fa-arrow-right ml-2"></i>
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Create your professional Resume in<br>3 simple steps</h1>
+                <p class="text-xl text-gray-600 mb-8">Fill in the blanks, choose a template, and download your<br>resume instantly</p>
+                <a href="cv-builder.html" class="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors">
+                    Create resume
                 </a>
-                <a href="#templates" class="border border-blue-600 text-blue-600 px-8 py-3 rounded-full hover:bg-blue-50">
-                    View Templates
-                </a>
-            </div>
-            <!-- Hero Image -->
-            <img src="path/to/resume-preview.png" alt="Resume Preview" class="mt-12 rounded-lg shadow-2xl max-w-4xl w-full">
-        </section>
-
-        <!-- Features Grid -->
-        <section id="features" class="bg-white py-20">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Why build your resume with PreciseCV?</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-shadow">
-                        <i class="fas fa-magic text-blue-600 text-3xl mb-4"></i>
-                        <h3 class="text-xl font-semibold mb-3">AI-Powered Builder</h3>
-                        <p class="text-gray-600">Create perfect resumes with our intelligent resume builder</p>
-                    </div>
-                    <!-- Add more feature cards -->
-                </div>
             </div>
         </section>
 
         <!-- Template Showcase -->
-        <section id="templates" class="py-20">
+        <section class="py-16 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Professional Resume Templates</h2>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <!-- Template previews -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                        <img src="path/to/template1.jpg" alt="Template 1" class="w-full">
-                        <div class="p-4">
-                            <h3 class="font-semibold">Professional</h3>
-                            <p class="text-gray-600 text-sm">Perfect for corporate roles</p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="/api/placeholder/320/400" alt="Resume Template 1" class="rounded-lg shadow-lg w-full"/>
                     </div>
-                    <!-- Add more templates -->
+                    <div class="transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="/api/placeholder/320/400" alt="Resume Template 2" class="rounded-lg shadow-lg w-full"/>
+                    </div>
+                    <div class="transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="/api/placeholder/320/400" alt="Resume Template 3" class="rounded-lg shadow-lg w-full"/>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Social Proof -->
-        <section class="bg-blue-600 text-white py-20">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold mb-12">Trusted by professionals worldwide</h2>
-                <div class="grid md:grid-cols-5 gap-8 items-center opacity-75">
-                    <!-- Add company logos -->
+        <!-- How It Works -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">How it works</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-indigo-600 text-xl font-bold mb-4">1. Fill in the blanks</div>
+                        <p class="text-gray-600">Start by filling in your resume details in our easy-to-use form</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-indigo-600 text-xl font-bold mb-4">2. Pick a template</div>
+                        <p class="text-gray-600">Select a resume template that matches your style and industry</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-indigo-600 text-xl font-bold mb-4">3. Download your CV</div>
+                        <p class="text-gray-600">Download your professional resume instantly in PDF format</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reviews Carousel -->
-        <section class="py-20">
+        <!-- Reviews Section -->
+        <section class="py-16 bg-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-12">What our users say</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg">
                         <div class="flex items-center mb-4">
                             <div class="text-yellow-400">★★★★★</div>
-                            <span class="ml-2 text-gray-600">5.0</span>
+                            <div class="ml-2">5.0</div>
                         </div>
-                        <p class="text-gray-700 mb-4">"PreciseCV made my job search so much easier. I landed my dream job within weeks!"</p>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
-                            <div class="ml-3">
-                                <h4 class="font-semibold">John Doe</h4>
-                                <p class="text-sm text-gray-600">Software Engineer</p>
-                            </div>
-                        </div>
+                        <p class="text-gray-600 mb-4">"The best CV generator I've ever used. Simple, professional, and effective."</p>
+                        <div class="font-semibold">Sarah Johnson</div>
                     </div>
-                    <!-- Add more reviews -->
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">★★★★★</div>
+                            <div class="ml-2">5.0</div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Got my dream job using the resume I created here. Highly recommended!"</p>
+                        <div class="font-semibold">Michael Chen</div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">★★★★★</div>
+                            <div class="ml-2">5.0</div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Professional templates and easy to use. Exactly what I needed."</p>
+                        <div class="font-semibold">Emma Williams</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-semibold mb-2">What is a resume?</h3>
+                        <p class="text-gray-600">A resume is a formal document that summarizes your professional background, skills, and accomplishments.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-semibold mb-2">How do I format my resume?</h3>
+                        <p class="text-gray-600">Our platform automatically formats your resume professionally. Just input your information and choose a template.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-semibold mb-2">Can I download my resume as PDF?</h3>
+                        <p class="text-gray-600">Yes, you can download your resume in PDF format, ensuring it looks consistent across all devices.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Modern Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
+    <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-4">PreciseCV</h3>
-                    <p class="text-sm">Create professional resumes in minutes.</p>
+                    <h3 class="font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">Resume Templates</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Career Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-300">How to Write a Resume</a></li>
+                    </ul>
                 </div>
-                <!-- Add more footer sections -->
+                <div>
+                    <h3 class="font-bold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">Features</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Pricing</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Premium</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-300">FAQ</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Download App</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block"><img src="/api/placeholder/120/40" alt="App Store" class="h-10"/></a>
+                        <a href="#" class="block"><img src="/api/placeholder/120/40" alt="Play Store" class="h-10"/></a>
+                    </div>
+                </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
-                <p>&copy; 2024 PreciseCV. All rights reserved.</p>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2025 PreciseCV. All rights reserved.</p>
             </div>
         </div>
     </footer>
