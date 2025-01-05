@@ -1,0 +1,6 @@
+{"level":"warn","message":"Unauthenticated user attempted to generate CV","timestamp":"2025-01-05T01:17:59.582Z"}
+{"level":"warn","message":"Unauthenticated user attempted to generate CV","timestamp":"2025-01-05T01:18:03.627Z"}
+{"level":"warn","message":"Unauthenticated user attempted to generate CV","timestamp":"2025-01-05T01:18:12.071Z"}
+{"level":"warn","message":"Unauthenticated user attempted to generate CV","timestamp":"2025-01-05T01:18:30.940Z"}
+{"timestamp":"2025-01-05T01:31:06.715Z","level":"warn","message":"Unauthenticated CV generation attempt","ip":"::ffff:127.0.0.1","userAgent":{"browser":"Chrome 131.0.0","os":"Windows 10.0.0","device":"Other 0.0.0"},"path":"/generate-cv","method":"POST"}
+{"timestamp":"2025-01-05T01:32:02.320Z","level":"warn","message":"Unauthenticated CV generation attempt","ip":"::1","userAgent":{"browser":"Chrome 131.0.0","os":"Windows 10.0.0","device":"Other 0.0.0"},"path":"/generate-cv","method":"POST"}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreciseCV Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">PreciseCV Admin</h1>
+            <div class="flex items-center space-x-4">
+                <span id="adminName" class="text-sm"></span>
+                <button onclick="logout()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Total Downloads</h3>
+                <p id="totalDownloads" class="text-3xl font-bold text-gray-900">0</p>
+                <div class="mt-2 flex items-center text-sm text-green-600">
+                    <span id="downloadTrend">+0%</span>
+                    <span class="ml-2">vs last week</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Active Users</h3>
+                <p id="activeUsers" class="text-3xl font-bold text-gray-900">0</p>
+                <div class="mt-2 flex items-center text-sm text-blue-600">
+                    <span id="userTrend">+0%</span>
+                    <span class="ml-2">vs last week</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Error Rate</h3>
+                <p id="errorRate" class="text-3xl font-bold text-gray-900">0%</p>
+                <div class="mt-2 flex items-center text-sm text-red-600">
+                    <span id="errorTrend">+0%</span>
+                    <span class="ml-2">vs last week</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Revenue</h3>
+                <p id="totalRevenue" class="text-3xl font-bold text-gray-900">$0</p>
+                <div class="mt-2 flex items-center text-sm text-green-600">
+                    <span id="revenueTrend">+0%</span>
+                    <span class="ml-2">vs last week</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">Downloads Over Time</h3>
+                <canvas id="downloadsChart"></canvas>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">User Locations</h3>
+                <div id="locationMap" style="height: 300px;"></div>
+            </div>
+        </div>
+
+        <!-- Recent Activity and Errors -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentActivity" class="divide-y divide-gray-200"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4">Recent Errors</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Error</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentErrors" class="divide-y divide-gray-200"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/user/profile');
+                if (!response.ok) {
+                    window.location.href = '/login';
+                    return;
+                }
+                const data = await response.json();
+                if (!data.user.isAdmin) {
+                    window.location.href = '/';
+                    return;
+                }
+                document.getElementById('adminName').textContent = data.user.name;
+            } catch (error) {
+                window.location.href = '/login';
+            }
+        }
+
+        // Fetch dashboard data
+        async function fetchDashboardData() {
+            try {
+                const response = await fetch('/api/analytics/dashboard-summary');
+                const data = await response.json();
+                updateDashboard(data);
+            } catch (error) {
+                console.error('Error fetching dashboard data:', error);
+            }
+        }
+
+        // Update dashboard UI
+        function updateDashboard(data) {
+            // Update summary cards
+            document.getElementById('totalDownloads').textContent = data.totalDownloads;
+            document.getElementById('errorRate').textContent = 
+                ((data.totalErrors / data.totalDownloads) * 100).toFixed(1) + '%';
+
+            // Update recent activity
+            const activityTable = document.getElementById('recentActivity');
+            activityTable.innerHTML = data.recentInteractions.map(interaction => `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">${interaction.userId.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${interaction.eventType}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${new Date(interaction.timestamp).toLocaleString()}
+                    </td>
+                </tr>
+            `).join('');
+
+            // Initialize map
+            const map = L.map('locationMap').setView([0, 0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            // Add location markers
+            data.userLocations.forEach(location => {
+                if (location._id.latitude && location._id.longitude) {
+                    L.marker([location._id.latitude, location._id.longitude])
+                        .bindPopup(`${location._id.country}: ${location.count} users`)
+                        .addTo(map);
+                }
+            });
+
+            // Initialize downloads chart
+            const ctx = document.getElementById('downloadsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['7 days ago', '6 days ago', '5 days ago', '4 days ago', '3 days ago', '2 days ago', 'Today'],
+                    datasets: [{
+                        label: 'Downloads',
+                        data: [65, 59, 80, 81, 56, 55, 40],
+                        fill: false,
+                        borderColor: 'rgb(59, 130, 246)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Logout function
+        async function logout() {
+            try {
+                await fetch('/api/auth/logout');
+                window.location.href = '/login';
+            } catch (error) {
+                console.error('Error logging out:', error);
+            }
+        }
+
+        // Initialize dashboard
+        checkAuth();
+        fetchDashboardData();
+        // Refresh data every 5 minutes
+        setInterval(fetchDashboardData, 300000);
+    </script>
+</body>
+</html> 

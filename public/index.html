@@ -3,229 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreciseCV</title>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <title>Welcome to PreciseCV</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./js/workReference.js" defer></script>
-    <script src="./js/education.js" defer></script>
-    <script src="./js/workExperience.js" defer></script>
-    <script src="./js/skills.js" defer></script>
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-gray-50">
-    <header class="bg-blue-600 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold">PreciseCV</h1>
-            <nav>
-                <!-- <a href="#" class="text-white hover:underline mx-2">Home</a> -->
-                <!--  <a href="#" class="text-white hover:underline mx-2">About</a> -->
-                <!-- <a href="/stitch_sense/privacy" class="text-white hover:underline mx-2">Privacy Policy</a> -->
+<body class="bg-gradient-to-b from-white to-gray-100">
+    <!-- Modern minimal header -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">PreciseCV</h1>
+            <nav class="space-x-6">
+                <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                <a href="#templates" class="text-gray-600 hover:text-blue-600">Templates</a>
+                <a href="cv-builder.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+                    Create Resume
+                </a>
             </nav>
         </div>
     </header>
 
-    <div class="container mx-auto px-4 py-8">
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold mb-4"><u>PERSONAL DETAILS</u></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                    <label class="font-semibold">Name:</label>
-                    <input type="text" id="name" class="block w-full border border-gray-300 rounded-md p-2" placeholder="John Doe">
-                </div>
-                <div>
-                    <label class="font-semibold">Email:</label>
-                    <input type="email" id="email" class="block w-full border border-gray-300 rounded-md p-2" placeholder="john.doe@example.com">
-                </div>
-                <div>
-                    <label class="font-semibold">Address:</label>
-                    <input type="text" id="address" class="block w-full border border-gray-300 rounded-md p-2" placeholder="31 Smith Street, New York, Harare">
-                </div>
-                <div>
-                    <label class="font-semibold">Phone:</label>
-                    <input type="tel" id="phone" class="block w-full border border-gray-300 rounded-md p-2" placeholder="(263) 775 634 192">
-                </div>
-                <div>
-                    <label class="font-semibold">Date of Birth:</label>
-                    <input type="text" id="dateOfBirth" class="block w-full border border-gray-300 rounded-md p-2" placeholder="09/07/2000">
-                </div>
-                <div>
-                    <label class="font-semibold">Gender:</label>
-                    <select id="gender" class="block w-full border border-gray-300 rounded-md p-2">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="font-semibold">Marital Status:</label>
-                    <select id="maritalStatus" class="block w-full border border-gray-300 rounded-md p-2">
-                        <option value="Single">Single</option>
-                        <option value="Married">Married</option>
-                        <option value="Divorced">Divorced</option>
-                    </select>
+    <main class="pt-20">
+        <!-- Hero Section with Modern Layout -->
+        <section class="container mx-auto px-4 py-16 flex flex-col items-center text-center">
+            <h2 class="text-5xl font-bold mb-6">Build a professional resume<br>for free</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl">
+                Create resumes that get noticed simple, easy, fast, free
+            </p>
+            <div class="flex gap-4">
+                <a href="cv-builder.html" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 flex items-center">
+                    Start Building <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#templates" class="border border-blue-600 text-blue-600 px-8 py-3 rounded-full hover:bg-blue-50">
+                    View Templates
+                </a>
+            </div>
+            <!-- Hero Image -->
+            <img src="path/to/resume-preview.png" alt="Resume Preview" class="mt-12 rounded-lg shadow-2xl max-w-4xl w-full">
+        </section>
+
+        <!-- Features Grid -->
+        <section id="features" class="bg-white py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Why build your resume with PreciseCV?</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-xl bg-gray-50 hover:shadow-lg transition-shadow">
+                        <i class="fas fa-magic text-blue-600 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">AI-Powered Builder</h3>
+                        <p class="text-gray-600">Create perfect resumes with our intelligent resume builder</p>
+                    </div>
+                    <!-- Add more feature cards -->
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Education Section -->
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8" id="educationSection">
-            <h2 class="text-2xl font-semibold mb-4"><u>EDUCATIONAL BACKGROUND</u></h2>
-            <small class="mb-3 block"><em>Click the "+" button to add education</em></small>
-            <div id="educationContainer">
-                <div class="education border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div>
-                            <label class="font-semibold">School Name:</label>
-                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 school" placeholder="School Name">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Level:</label>
-                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 level" placeholder="Level">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Duration:</label>
-                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
+        <!-- Template Showcase -->
+        <section id="templates" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Professional Resume Templates</h2>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <!-- Template previews -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                        <img src="path/to/template1.jpg" alt="Template 1" class="w-full">
+                        <div class="p-4">
+                            <h3 class="font-semibold">Professional</h3>
+                            <p class="text-gray-600 text-sm">Perfect for corporate roles</p>
                         </div>
                     </div>
-                    <div class="mt-6">
-                        <p class="font-semibold mb-2"><u>Grades:</u></p>
-                        <small class="mb-3"><em>Click the "add Grade" button to add education grades</em></small>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 grade-score-container">
-                        </div>
-                        <button class="addGrade mt-4 bg-blue-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded">
-                           ADD GRADE
-                           </button>
-                    </div>
+                    <!-- Add more templates -->
                 </div>
             </div>
-            <button id="addEducation" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-               </button>
-        </div>
-  
+        </section>
 
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8" id="workExperienceSection">
-            <h2 class="text-2xl font-semibold mb-4"><u>WORK EXPERIENCE</u></h2>
-            <small class="mb-3 block"><em>Click the "+" button to add other experiences</em></small>
-            <div id="workExperienceContainer">
-                <div class="work-experience border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <div>
-                            <label class="font-semibold">Position:</label>
-                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 position" placeholder="Position">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Company:</label>
-                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 company" placeholder="Company">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Duration:</label>
-                            <input type="text" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <label class="font-semibold">Responsibility:</label>
-                        <textarea class="block w-full border border-gray-300 rounded-md p-2 responsibility" rows="4" placeholder="Responsibility"></textarea>
-                    </div>
+        <!-- Social Proof -->
+        <section class="bg-blue-600 text-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-12">Trusted by professionals worldwide</h2>
+                <div class="grid md:grid-cols-5 gap-8 items-center opacity-75">
+                    <!-- Add company logos -->
                 </div>
             </div>
-            <button id="addExperience" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-               </button>
-        </div>
+        </section>
 
-        <!-- Work Reference Section -->
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8" id="workReferenceSection">
-            <h2 class="text-2xl font-semibold mb-4"><u>WORK REFERENCE</u></h2>
-            <small class="mb-3 block"><em>Click the "+" button to add work reference</em></small>
-            <div id="workReferenceContainer">
-                <div class="work-reference border border-gray-300 p-6 mb-6 rounded-lg shadow-md relative">
-                    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <div>
-                            <label class="font-semibold">Position:</label>
-                            <input type="text" id="position" class="block w-full border border-gray-300 rounded-md p-2 position" placeholder="Position">
+        <!-- Reviews Carousel -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">What our users say</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">★★★★★</div>
+                            <span class="ml-2 text-gray-600">5.0</span>
                         </div>
-                        <div>
-                            <label class="font-semibold">Company:</label>
-                            <input type="text" id="company" class="block w-full border border-gray-300 rounded-md p-2 company" placeholder="Company">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Duration:</label>
-                            <input type="text" id="duration" class="block w-full border border-gray-300 rounded-md p-2 duration" placeholder="January 2020 - Present">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Title:</label>
-                            <select id="title" class="block w-full border border-gray-300 rounded-md p-2">
-                                <option value="Mr.">Mr</option>
-                                <option value="Mrs.">Mrs</option>
-                                <option value="Miss">Miss</option>
-                                <option value="Dr">Dr</option>
-                                <option value="Prof">Prof</option>
-                            </select>
+                        <p class="text-gray-700 mb-4">"PreciseCV made my job search so much easier. I landed my dream job within weeks!"</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                            <div class="ml-3">
+                                <h4 class="font-semibold">John Doe</h4>
+                                <p class="text-sm text-gray-600">Software Engineer</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div>
-                            <label class="font-semibold">Contact Name:</label>
-                            <input type="text" id="contact-name" class="block w-full border border-gray-300 rounded-md p-2 contact-name" placeholder="Contact Name">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Contact Surname:</label>
-                            <input type="text" id="contact-surname" class="block w-full border border-gray-300 rounded-md p-2 contact-surname" placeholder="Contact Surname">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Contact Email:</label>
-                            <input type="email" id="contact-email" class="block w-full border border-gray-300 rounded-md p-2 contact-email" placeholder="Contact Email">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Contact Phone:</label>
-                            <input type="tel" id="contact-phone" class="block w-full border border-gray-300 rounded-md p-2 contact-phone" placeholder="Contact Phone">
-                        </div>
-                        <div>
-                            <label class="font-semibold">Contact Position:</label>
-                            <input type="text" id="contact-position" class="block w-full border border-gray-300 rounded-md p-2 contact-position" placeholder="Contact Position">
-                        </div>
-                    </div>
+                    <!-- Add more reviews -->
                 </div>
             </div>
-            <button id="addPosition" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-                   </button>
-        </div>
+        </section>
+    </main>
 
-        <!-- Skills Section -->
-        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold mb-4"><u>SKILLS</u></h2>
-            <small class="mb-3 block"><em>Click the "+" button to add skills</em></small>
-            <div id="skillsContainer" class="border border-gray-300 p-6 mb-6 rounded-lg shadow-md">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="skillInputs">
-                    <!-- Skills will be added here -->
+    <!-- Modern Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">PreciseCV</h3>
+                    <p class="text-sm">Create professional resumes in minutes.</p>
                 </div>
+                <!-- Add more footer sections -->
             </div>
-            <button id="addSkill" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-
-                </button>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+                <p>&copy; 2024 PreciseCV. All rights reserved.</p>
+            </div>
         </div>
-    </div>
-        <!-- Save Button with Loader -->
-        <div class="flex justify-center pb-8">
-            <button id="save" class="flex items-center bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-8 rounded disabled:opacity-50" disabled>
-                <span id="save-text">DOWNLOAD CV</span>
-                <svg id="save-loader" class="w-5 h-5 ml-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-    
-
-    <script src="./js/index.js"></script>
+    </footer>
 </body>
 </html>

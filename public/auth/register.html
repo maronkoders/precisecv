@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PreciseCV</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    Create your account
+                </h2>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Or
+                    <a href="/login" class="font-medium text-blue-600 hover:text-blue-500">
+                        sign in to your account
+                    </a>
+                </p>
+            </div>
+
+            <!-- Error Alert -->
+            <div id="errorAlert" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <span id="errorMessage" class="block sm:inline"></span>
+            </div>
+
+            <form id="registerForm" class="mt-8 space-y-6">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="name" class="sr-only">Full name</label>
+                        <input id="name" name="name" type="text" required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="Full name">
+                    </div>
+                    <div>
+                        <label for="email" class="sr-only">Email address</label>
+                        <input id="email" name="email" type="email" required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="Email address">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="Password">
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="sr-only">Confirm password</label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="Confirm password">
+                    </div>
+                </div>
+
+                <!-- Password Requirements -->
+                <div class="text-sm text-gray-600">
+                    <p class="font-medium mb-2">Password must contain:</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li id="lengthCheck" class="text-red-500">At least 8 characters</li>
+                        <li id="upperCheck" class="text-red-500">One uppercase letter</li>
+                        <li id="lowerCheck" class="text-red-500">One lowercase letter</li>
+                        <li id="numberCheck" class="text-red-500">One number</li>
+                        <li id="specialCheck" class="text-red-500">One special character</li>
+                    </ul>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="flex items-center">
+                    <input id="terms" name="terms" type="checkbox" required
+                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                    <label for="terms" class="ml-2 block text-sm text-gray-900">
+                        I agree to the
+                        <a href="#" class="text-blue-600 hover:text-blue-500">Terms and Conditions</a>
+                    </label>
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+
+                <div>
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <svg class="h-5 w-5 text-blue-500 group-hover:text-blue-400"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        Create Account
+                    </button>
+                </div>
+
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-gray-50 text-gray-500">
+                                Or continue with
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <div>
+                            <a href="/api/auth/google"
+                                class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fab fa-google text-red-500 text-lg"></i>
+                                <span class="ml-2">Google</span>
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="/api/auth/facebook"
+                                class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fab fa-facebook text-blue-600 text-lg"></i>
+                                <span class="ml-2">Facebook</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Password validation
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const lengthCheck = document.getElementById('lengthCheck');
+        const upperCheck = document.getElementById('upperCheck');
+        const lowerCheck = document.getElementById('lowerCheck');
+        const numberCheck = document.getElementById('numberCheck');
+        const specialCheck = document.getElementById('specialCheck');
+
+        function validatePassword() {
+            const pass = password.value;
+            
+            // Length check
+            if (pass.length >= 8) {
+                lengthCheck.classList.remove('text-red-500');
+                lengthCheck.classList.add('text-green-500');
+            } else {
+                lengthCheck.classList.remove('text-green-500');
+                lengthCheck.classList.add('text-red-500');
+            }
+
+            // Uppercase check
+            if (/[A-Z]/.test(pass)) {
+                upperCheck.classList.remove('text-red-500');
+                upperCheck.classList.add('text-green-500');
+            } else {
+                upperCheck.classList.remove('text-green-500');
+                upperCheck.classList.add('text-red-500');
+            }
+
+            // Lowercase check
+            if (/[a-z]/.test(pass)) {
+                lowerCheck.classList.remove('text-red-500');
+                lowerCheck.classList.add('text-green-500');
+            } else {
+                lowerCheck.classList.remove('text-green-500');
+                lowerCheck.classList.add('text-red-500');
+            }
+
+            // Number check
+            if (/[0-9]/.test(pass)) {
+                numberCheck.classList.remove('text-red-500');
+                numberCheck.classList.add('text-green-500');
+            } else {
+                numberCheck.classList.remove('text-green-500');
+                numberCheck.classList.add('text-red-500');
+            }
+
+            // Special character check
+            if (/[!@#$%^&*]/.test(pass)) {
+                specialCheck.classList.remove('text-red-500');
+                specialCheck.classList.add('text-green-500');
+            } else {
+                specialCheck.classList.remove('text-green-500');
+                specialCheck.classList.add('text-red-500');
+            }
+        }
+
+        password.addEventListener('input', validatePassword);
+
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validate passwords match
+            if (password.value !== confirmPassword.value) {
+                showError('Passwords do not match');
+                return;
+            }
+
+            // Validate password requirements
+            if (!isPasswordValid()) {
+                showError('Please meet all password requirements');
+                return;
+            }
+
+            // Validate terms
+            if (!document.getElementById('terms').checked) {
+                showError('Please accept the terms and conditions');
+                return;
+            }
+
+            // Validate reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                showError('Please complete the reCAPTCHA');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        password: password.value,
+                        recaptchaResponse
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    window.location.href = '/login?registered=true';
+                } else {
+                    showError(data.error || 'Registration failed');
+                }
+            } catch (error) {
+                showError('An error occurred. Please try again.');
+            }
+        });
+
+        function isPasswordValid() {
+            const pass = password.value;
+            return pass.length >= 8 &&
+                /[A-Z]/.test(pass) &&
+                /[a-z]/.test(pass) &&
+                /[0-9]/.test(pass) &&
+                /[!@#$%^&*]/.test(pass);
+        }
+
+        function showError(message) {
+            const errorAlert = document.getElementById('errorAlert');
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorAlert.classList.remove('hidden');
+        }
+
+        // Check if user is already logged in
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/user/profile');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.user.isAdmin) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        window.location.href = '/';
+                    }
+                }
+            } catch (error) {
+                // User is not logged in, stay on registration page
+            }
+        }
+
+        checkAuth();
+    </script>
+</body>
+</html> 
